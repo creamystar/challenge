@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+body {
+	font-size: 0pt;
+}
+
+#info {
+	font-size: 10pt;
+}
+
+#txt {
+	width: 255px;
+	height: 50px;
+	margin-left: 1px;
+	background-color: #f0f0f0;
+}
+
+#txt,#one,#zero,#equal {
+	font-size: 12pt;
+	font-family: "210 OmniGothic 040";
+}
+
+#one,#zero,#equal {
+	background-color: #1bae95;
+	
+	
+	color:white;
+}
+
+#one {
+	width: 50px;
+	height: 50px;
+}
+
+#zero {
+	width: 102px;
+	height: 50px;
+}
+
+#equal {
+	width: 50px;
+	height: 153px;
+}
+</style>
+<script type="text/javascript">
+	var ans = 0, temp = 1, rep = null, cal = null, list = null, cals = null,eq=1;
+
+	function num(obj) {
+
+		var txt = document.getElementById("txt");
+
+		/*if(list=='='){
+			cal=null;
+		}
+		list=obj.value;*/
+
+		if (txt.value == 0) {
+			txt.value = obj.value;
+			rep = obj.value;
+			temp = 1;
+			eq=1;
+		} else if (/*ans == 0 && */cal != null && temp == 0||eq==0) {
+			txt.value = obj.value;
+			rep = obj.value;
+			temp = 1;
+			eq=1;
+		} else if (temp == 1) {
+			txt.value += obj.value;
+			rep += obj.value;
+
+		} else {
+			txt.value += obj.value;
+			rep += obj.value;
+
+		}
+
+		list = null;
+
+	}
+
+	function plus() {
+
+		if (list != null) {
+			cal = '+';
+		} else
+
+		if (cal != null) {
+			if (cal == '+') {
+				ans = ans * 1 + txt.value * 1;
+				txt.value = ans;
+				cal = '+';
+				temp = 0;
+			} else if (cal == '-') {
+				ans = ans * 1 - txt.value * 1;
+				txt.value = ans;
+
+				
+				
+				cal = '+';
+				temp = 0;
+			} else if (cal == '*') {
+				ans = ans * 1 * txt.value * 1;
+				txt.value = ans;
+				cal = '+';
+				temp = 0;
+			} else if (cal == '/') {
+				ans = ans * 1 / txt.value * 1;
+				txt.value = ans;
+				cal = '+';
+				temp = 0;
+
+			}
+		} else {
+
+			ans = txt.value;
+			cal = '+';
+			txt.value = null;
+			temp = 1;
+
+		}
+
+		list = '+';
+
+	}
+
+	function minus() {
+
+		if (list != null) {
+			cal = '-';
+		} else
+
+		if (cal != null) {
+			if (cal == '+') {
+				ans = ans * 1 + txt.value * 1;
+				txt.value = ans;
+				cal = '-';
+				temp = 0;
+			} else if (cal == '-') {
+				ans = ans * 1 - txt.value * 1;
+				txt.value = ans;
+				cal = '-';
+				temp = 0;
+			} else if (cal == '*') {
+				ans = ans * 1 * txt.value * 1;
+				txt.value = ans;
+				cal = '-';
+				temp = 0;
+			} else if (cal == '/') {
+				ans = ans * 1 / txt.value * 1;
+				txt.value = ans;
+				cal = '-';
+				temp = 0;
+
+			}
+		} else {
+
+			ans = txt.value;
+			cal = '-';
+			txt.value = null;
+			temp = 1;
+
+		}
+		list = '-';
+
+	}
+
+	function times() {
+
+		if (list != null) {
+			cal = '*';
+		} else if (cal != null) {
+			if (cal == '+') {
+				ans = ans * 1 + txt.value * 1;
+				txt.value = ans;
+				cal = '*';
+				temp = 0;
+			} else if (cal == '-') {
+				ans = ans * 1 - txt.value * 1;
+				txt.value = ans;
+				cal = '*';
+				temp = 0;
+			} else if (cal == '*') {
+				ans = ans * 1 * txt.value * 1;
+				txt.value = ans;
+				cal = '*';
+				temp = 0;
+			} else if (cal == '/') {
+				ans = ans * 1 / txt.value * 1;
+				txt.value = ans;
+				cal = '*';
+				temp = 0;
+
+			}
+		} else {
+
+			ans = txt.value;
+			cal = '*';
+			txt.value = null;
+			temp = 1;
+
+		}
+
+		list = '*';
+
+	}
+
+	function devide() {
+		if (list != null) {
+			cal = '/';
+		} else if (cal != null) {
+			if (cal == '+') {
+				ans = ans * 1 + txt.value * 1;
+				txt.value = ans;
+				cal = '/';
+				temp = 0;
+			} else if (cal == '-') {
+				ans = ans * 1 - txt.value * 1;
+				txt.value = ans;
+				cal = '/';
+				temp = 0;
+			} else if (cal == '*') {
+				ans = ans * 1 * txt.value * 1;
+				txt.value = ans;
+				cal = '/';
+				temp = 0;
+			} else if (cal == '/') {
+				ans = ans * 1 / txt.value * 1;
+				txt.value = ans;
+				cal = '/';
+				temp = 0;
+
+			}
+		} else {
+
+			ans = txt.value;
+			cal = '/';
+			txt.value = null;
+			temp = 1;
+
+		}
+
+		list = '/';
+
+	}
+
+	function zero() {
+		txt.value = 0;
+		cal = null;
+		ans = 0;
+		temp = 0;
+		list = 0;
+
+	}
+
+	function comp() {
+
+		if (cal != null) {
+			cals = cal;
+			cal = null;
+		}
+		list = '=';
+
+		/*	if(list=='='){*/
+
+		if (cals == '+') {
+			ans = ans * 1 + rep * 1;
+			txt.value = ans;
+			
+
+		} else if (cals == '-') {
+			ans = ans * 1 - rep * 1;
+			txt.value = ans;
+
+		} else if (cals == '*') {
+			ans = ans * 1 * rep * 1;
+			txt.value = ans;
+
+		} else if (cals == '/') {
+			ans = ans * 1 / rep * 1;
+			txt.value = ans;
+
+		}
+		
+		temp=0;
+		eq=0;
+
+		/*	} /*else 
+			
+			if (cals == '+') {
+				ans = ans * 1 + txt.value * 1;
+				rep=txt.value;
+				txt.value = ans;
+				temp = 0;
+			} else if (cals == '-') {
+				ans = ans * 1 - txt.value * 1;
+				rep=txt.value;
+
+				txt.value = ans;
+				temp = 0;
+			} else if (cals == '*') {
+				ans = ans * 1 * txt.value * 1;
+				rep=txt.value;
+
+				txt.value = ans;
+				temp = 0;
+			} else if (cals == '/') {
+				ans = ans * 1 / txt.value * 1;
+				rep=txt.value;
+
+				txt.value = ans;
+				temp = 0;
+
+			}*/
+
+	}
+
+	/*if(txt.value == '+' || txt.value == '-' || txt.value == '*' || txt.value == '/'){
+		txt.value = '+';
+	} else {
+		if(var temp!=0) {
+			var temp2 = txt.value;
+			var temp2 += temp;
+		}
+		var temp = txt.value;
+		txt.value = '+';
+	}
+	}
+	
+	/*	function comp() {
+	var txt = document.getElementById("txt");
+	
+	if()
+	
+	}*/
+</script>
+</head>
+<body>
+
+
+	<input type="text" id="txt" readonly="readonly" value="0" />
+	<!--  <span id=info>(결과값)</span>-->
+	<br />
+
+
+	<table border="0" cellspacing="0">
+		<colgroup>
+			<col width="50px" />
+			<col width="50px" />
+			<col width="50px" />
+			<col width="50px" />
+			<col width="50px" />
+		</colgroup>
+		<thead></thead>
+		<tbody>
+			<tr>
+				<td><input type="button" value="1" onclick="num(this);"
+					id="one" /></td>
+				<td><input type="button" value="2" onclick="num(this);"
+					id="one" /></td>
+				<td><input type="button" value="3" onclick="num(this);"
+					id="one" /></td>
+				<td><input type="button" value="/" onclick="devide();" id="one" /></td>
+				<td><input type="button" value="c" onclick="zero();" id="one" /></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="4" onclick="num(this);"
+					id="one" /></td>
+				<td><input type="button" value="5" onclick="num(this);"
+					id="one" /></td>
+				<td><input type="button" value="6" onclick="num(this);"
+					id="one" /></td>
+				<td><input type="button" value="*" onclick="times();" id="one" /></td>
+				<td rowspan="3"><input type="button" value="="
+					onclick="comp();" id="equal" /></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="7" onclick="num(this);"
+					id="one" /></td>
+				<td><input type="button" value="8" onclick="num(this);"
+					id="one" /></td>
+				<td><input type="button" value="9" onclick="num(this);"
+					id="one" /></td>
+				<td><input type="button" value="-" onclick="minus();" id="one" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="button" value="0"
+					onclick="num(this);" id="zero" /></td>
+				<td colspan="2"><input type="button" value="+"
+					onclick="plus();" id="zero" /></td>
+			</tr>
+		</tbody>
+		<tfoot></tfoot>
+	</table>
+
+</body>
+</html>
